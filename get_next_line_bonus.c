@@ -66,7 +66,7 @@ static char	*final_ret(t_fildes *node, int pos_nl, ssize_t cont)
 	}
 	set_zero(aux, ft_strlen(node->ptr) + ptr_len + 1);
 	concat_str(aux, node->ptr, ft_strlen(node->ptr));
-	concat_str(aux, node->ptr, ptr_len);
+	concat_str(aux, node->buffer, ptr_len);
 	free(node->ptr);
 	reset_str_sta(node->buffer, pos_nl);
 	return (aux);
@@ -130,21 +130,21 @@ char	*get_next_line(int fd)
 		return (act->ptr);
 	return (final_ret(act, contains_new_line(act->buffer), cont));
 }
-/*
+
 int	main(void)
 {
 	int		fd;
 	char	*p;
 
-	fd = open("../../francinette/tests/get_next_line/fsoares/variable_nls.txt",
+	fd = open("get_next_line_bonus.c",
 			O_RDONLY);
 	p = "a";
 	while (p)
 	{
 		p = get_next_line(fd);
-		//printf("%s", p);
+		printf("%s", p);
 		free(p);
 	}
 }
-*/
+
 
